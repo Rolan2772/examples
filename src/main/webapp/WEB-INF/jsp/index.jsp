@@ -9,6 +9,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="addContact">Create contact</a>
+        <a href="createContact">Create contact</a>
     </body>
 </html>

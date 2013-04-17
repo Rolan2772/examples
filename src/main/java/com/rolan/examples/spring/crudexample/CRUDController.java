@@ -33,7 +33,7 @@ public class CRUDController {
         return mv;
     }
     
-    @RequestMapping(value = "/addContact", method = RequestMethod.GET)
+    @RequestMapping(value = "/createContact", method = RequestMethod.GET)
     public ModelAndView createContactForm() {
         return new ModelAndView("/createContact", "contact", new Contact());
     }
