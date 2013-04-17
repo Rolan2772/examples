@@ -43,4 +43,6 @@
     
     <tx:annotation-driven/>
     
+    <mvc:view-controller path="/" view-name="/index"/>
+    
 </beans>

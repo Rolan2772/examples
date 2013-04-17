@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "CONTACTS")
@@ -18,6 +20,7 @@ public class Contact {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column
+    @NotEmpty(message = "Name is required.")
     private String name;
     @Column
     private String address;
@@ -25,6 +28,7 @@ public class Contact {
     private String gender;
     @Column
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dob;
     @Column
     private String email;
