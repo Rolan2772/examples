@@ -11,4 +11,5 @@
     <body>        
         <a href="createContact">Create contact</a>
     </body>
+    JUST A TEST
 </html>
