@@ -11,4 +11,5 @@
     <body>        
         <a href="createContact">Create contact</a>
     </body>
+	Merging local and server comiited data
 </html>
