@@ -11,15 +11,16 @@ Author     : Rolan Burykin
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><fmt:message key="createContact.title"/></title>
+        <title><fmt:message key="update.title"/></title>
     </head>
     <body>        
-        <form:form method="POST" commandName="contact" action="/createContact">            
+        <form:form method="POST" commandName="contact" action="/updateContact">
+            <form:hidden path="id"/>
             <table>
                 <tr>
                     <td colspan="10"><h2>Contact data:</h2></td>
                 </tr>
-                <tr>
+                <tr>                    
                     <td>
                         <form:label path="name">User name:</form:label>
                         </td>
@@ -42,7 +43,7 @@ Author     : Rolan Burykin
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" value="Create"/>
+                        <input type="submit" value="Update"/>
                     </td>
                 </tr>
             </table>
