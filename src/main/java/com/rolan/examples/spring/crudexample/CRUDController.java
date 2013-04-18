@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,7 +26,7 @@ public class CRUDController {
     @Autowired
     private ContactsDao contactsDao;
     
-    @RequestMapping(value = "/viewAllContacts")
+    @RequestMapping(value={"/", "/viewAllContacts",})
     public ModelAndView getAllContacts() {
         ModelAndView mv = new ModelAndView("/showContacts");
         List<Contact> contacts = contactsDao.getAllContacts();

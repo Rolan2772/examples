@@ -43,7 +43,7 @@
     
     <tx:annotation-driven/>
     
-    <mvc:view-controller path="/" view-name="/showContacts"/>
+    <!--<mvc:view-controller path="/" view-name="showContacts"/>-->
     
     <bean name="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/messages/messages"/>
