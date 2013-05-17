@@ -65,7 +65,7 @@ public class CRUDController {
         }
     }
     
-    @RequestMapping(value = "/deleteContact")
+    @RequestMapping(value = "/deleteContact", method = RequestMethod.POST)
     public String deleteContact(@RequestParam Long id) {
         contactsDao.delete(id);
         return "redirect:/viewAllContacts";
