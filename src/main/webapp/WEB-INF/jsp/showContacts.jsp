@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -47,7 +48,10 @@
                                 <c:out value="${contact.address}"/>
                             </td>
                             <td><a href="updateContact?id=<c:out value="${contact.id}"/>">update</a></td>
+                            <%--<form:form method="DELETE">--%>
                             <td><a href="deleteContact?id=<c:out value="${contact.id}"/>">delete</a></td>
+                            <%--<form:hidden id="id"></form:hidden> 
+                            </form:form>--%>
                         </tr>
                     </c:forEach>            
                 </table>
