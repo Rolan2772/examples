@@ -24,7 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CrudController {
     
     @Autowired
-    private ContactsDao contactsDao;
+    private ContactsDao1 contactsDao;
     
     @RequestMapping(value={"/", "/viewAllContacts",})
     public ModelAndView getAllContacts() {

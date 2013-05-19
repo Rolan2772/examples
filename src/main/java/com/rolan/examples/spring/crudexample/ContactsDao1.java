@@ -18,9 +18,9 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Rolan Burykin
  */
-@Repository("contactsDao")
+@Repository("contactsDao1")
 @Transactional
-public class ContactsDao {
+public class ContactsDao1 {
     
     @Autowired
     private SessionFactory sessionFactory;
