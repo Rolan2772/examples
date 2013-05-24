@@ -48,10 +48,7 @@
                                 <c:out value="${contact.address}"/>
                             </td>
                             <td><a href="updateContact?id=<c:out value="${contact.id}"/>">update</a></td>
-                            <%--<form:form method="DELETE">--%>
                             <td><a href="deleteContact?id=<c:out value="${contact.id}"/>">delete</a></td>
-                            <%--<form:hidden id="id"></form:hidden> 
-                            </form:form>--%>
                         </tr>
                     </c:forEach>            
                 </table>
