@@ -12,6 +12,21 @@ Author     : Rolan Burykin
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="createContact.title"/></title>
+        <%@include file="../jspf/jQueryImport.jspf" %>
+        <script>
+            $(function() {
+                $("input[type=submit]")
+                        .button()
+                        .click(function(event) {
+                    event.preventDefault();
+                });
+            });
+            $(function() {
+                $("#progressbar").progressbar({
+                    value: 37
+                });
+            });            
+            </script>
     </head>
     <body>        
         <form:form method="POST" commandName="contact" action="/createContact">            
@@ -48,5 +63,6 @@ Author     : Rolan Burykin
             </table>
         </form:form>
         <a href="viewAllContacts">return</a>
+        <div id="progressbar"></div>
     </body>
 </html>

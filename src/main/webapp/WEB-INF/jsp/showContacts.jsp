@@ -6,17 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@include file="../jspf/import.jspf"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="viewContacts.title"/></title>
-
         <style type="text/css">
             .tableHeader {font-weight: bold;}
-        </style>        
+        </style>
+        <%@include file="../jspf/jQueryImport.jspf" %>
     </head>
     <body>
         <c:choose>
