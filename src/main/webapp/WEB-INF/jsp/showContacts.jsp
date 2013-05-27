@@ -15,7 +15,7 @@
         <style type="text/css">
             .tableHeader {font-weight: bold;}
         </style>
-        <%@include file="../jspf/jQueryImport.jspf" %>
+        <%@include file="../jspf/jquery.jspf" %>
     </head>
     <body>
         <c:choose>

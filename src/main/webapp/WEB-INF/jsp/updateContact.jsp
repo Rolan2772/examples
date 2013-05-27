@@ -12,7 +12,7 @@ Author     : Rolan Burykin
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><fmt:message key="update.title"/></title>
-        <%@include file="../jspf/jQueryImport.jspf" %>
+        <%@include file="../jspf/jquery.jspf" %>
     </head>
     <body>        
         <form:form method="POST" commandName="contact" action="/updateContact">
