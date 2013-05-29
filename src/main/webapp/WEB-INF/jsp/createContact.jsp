@@ -46,7 +46,7 @@ Author     : Rolan Burykin
                         <input type="submit" value="Create"/>                        
                     </td>
                     <td>
-                        <a id="returnLink" href="viewAllContacts">Return</a>
+                        <a href="viewAllContacts">Return</a>
                     </td>
                 </tr>
             </table>

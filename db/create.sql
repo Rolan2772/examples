@@ -9,7 +9,7 @@ USE `crud` ;
 -- Table `crud`.`contacts`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `crud`.`contacts` (
-  `id` INT(11) NOT NULL ,
+  `id` INT NOT NULL AUTO_INCREMENT ,
   `name` VARCHAR(255) NULL DEFAULT NULL ,
   `address` VARCHAR(255) NULL DEFAULT NULL ,
   `gender` VARCHAR(255) NULL DEFAULT NULL ,

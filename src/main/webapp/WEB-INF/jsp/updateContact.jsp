@@ -44,11 +44,13 @@ Author     : Rolan Burykin
                 </tr>
                 <tr>
                     <td>
-                        <input type="submit" value="Update"/>
+                        <input type="submit" value="Save"/>
+                    </td>                
+                    <td>
+                        <a href="viewAllContacts">Return</a>
                     </td>
                 </tr>
             </table>
-        </form:form>
-        <a href="viewAllContacts">return</a>
+        </form:form>        
     </body>
 </html>
