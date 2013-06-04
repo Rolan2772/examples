@@ -21,6 +21,34 @@ CREATE  TABLE IF NOT EXISTS `crud`.`contacts` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+
+-- -----------------------------------------------------
+-- Table `crud`.`user_statuses`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `crud`.`user_statuses` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(25) NOT NULL ,
+  PRIMARY KEY (`id`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `crud`.`users`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `crud`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(128) NOT NULL ,
+  `priority` INT NOT NULL ,
+  `status` INT NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  INDEX `users_statuses_idx` (`status` ASC) ,
+  CONSTRAINT `users_statuses`
+    FOREIGN KEY (`status` )
+    REFERENCES `crud`.`user_statuses` (`id` )
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
 USE `crud` ;
 
 

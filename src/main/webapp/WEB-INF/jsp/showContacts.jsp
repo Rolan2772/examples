@@ -21,7 +21,7 @@
         <c:choose>
             <c:when test="${not empty contacts}">
                 <h2>Contacts data: </h2>
-                <table border="0" cellpadding="5" cellspacing="0">            
+                <table border="0" cellpadding="5" cellspacing="0">
                     <tr class="tableHeader">
                         <td>
                             Number
@@ -48,7 +48,7 @@
                             </td>
                             <td><a href="updateContact?id=<c:out value="${contact.id}"/>">update</a></td>
                             <td><a href="deleteContact?id=<c:out value="${contact.id}"/>">delete</a></td>
-                        </tr>
+                        </tr>                        
                     </c:forEach>            
                 </table>
             </c:when>
@@ -57,5 +57,6 @@
             </c:otherwise>
         </c:choose>
         <a href="createContact">Add contact</a>
+        <a href="users">Show users</a>        
     </body>
 </html>
