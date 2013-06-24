@@ -21,24 +21,24 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Rolan Burykin
  */
 @Controller
-public class CRUDController {
-    
+public class CrudController {
+
     @Autowired
     private ContactsDao contactsDao;
-    
-    @RequestMapping(value={"/", "/viewAllContacts",})
+
+    @RequestMapping(value = {"/", "/viewAllContacts",})
     public ModelAndView getAllContacts() {
         ModelAndView mv = new ModelAndView("/showContacts");
         List<Contact> contacts = contactsDao.getAllContacts();
         mv.addObject("contacts", contacts);
         return mv;
     }
-    
+
     @RequestMapping(value = "/createContact", method = RequestMethod.GET)
     public ModelAndView createContact() {
         return new ModelAndView("/createContact", "contact", new Contact());
     }
-    
+
     @RequestMapping(value = "/createContact", method = RequestMethod.POST)
     public String createContact(@ModelAttribute @Valid Contact contact, BindingResult result) {
         if (result.hasErrors()) {
@@ -48,13 +48,13 @@ public class CRUDController {
             return "redirect:/viewAllContacts";
         }
     }
-    
+
     @RequestMapping(value = "/updateContact", method = RequestMethod.GET)
     public ModelAndView editContact(@RequestParam Long id) {
         Contact contact = contactsDao.getContact(id);
         return new ModelAndView("updateContact", "contact", contact);
     }
-    
+
     @RequestMapping(value = "/updateContact", method = RequestMethod.POST)
     public String editContact(@ModelAttribute @Valid Contact contact, BindingResult result) {
         if (result.hasErrors()) {
@@ -64,7 +64,7 @@ public class CRUDController {
             return "redirect:/viewAllContacts";
         }
     }
-    
+
     @RequestMapping(value = "/deleteContact", method = RequestMethod.POST)
     public String deleteContact(@RequestParam Long id) {
         contactsDao.delete(id);
