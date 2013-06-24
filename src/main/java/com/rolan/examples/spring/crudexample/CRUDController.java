@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author Rolan Burykin
  */
 @Controller
-public class CrudController {
+public class CRUDController {
     
     @Autowired
     private ContactsDao contactsDao;
