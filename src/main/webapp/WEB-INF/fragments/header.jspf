@@ -1,0 +1,15 @@
+<%@include file="import.jspf" %>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><spring:message code="${title}"/></title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery_custom.css" />" />
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("input[type=submit], a").button();
+        });
+    </script>
+</head>

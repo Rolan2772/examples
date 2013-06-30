@@ -28,7 +28,7 @@
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.rolan.examples.spring.crudexample.dao"/>
+        <property name="packagesToScan" value="com.rolan.examples.spring.crudexample.entity"/>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>        
@@ -46,8 +46,15 @@
     <!--<mvc:view-controller path="/" view-name="showContacts"/>-->
     
     <bean name="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="/WEB-INF/messages/messages"/>
+        <property name="basenames">
+            <list>
+                <value>/WEB-INF/messages/messages</value>
+                <value>/WEB-INF/messages/controls</value>
+            </list>
+        </property>
         <property name="cacheSeconds" value="10"/>
     </bean>
+    
+    <mvc:resources mapping="/resources/**" location="/resources/" /> 
     
 </beans>

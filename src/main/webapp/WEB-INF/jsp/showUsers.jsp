@@ -4,18 +4,10 @@
     Author     : rol
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@include file="../jspf/import.jspf"%>
-
+<%@include file="../fragments/import.jspf"%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <%@include file="../jspf/jquery.jspf" %>
-        <style type="text/css">
-            .tableHeader {font-weight: bold;}
-        </style>
-    </head>
+    <c:set var="title" value="viewUsers.title" />
+    <%@include file="../fragments/header.jspf" %>
     <body>
         <c:if test="${not empty users}">
             <table border="0" cellpadding="5" cellspacing="0">
@@ -43,8 +35,12 @@
                         </td>
                     </tr>
                 </c:forEach>
+                <tr>
+                    <td>
+                        <a href="viewAllContacts">Return</a>
+                    </td>
+                </tr>
             </table>
         </c:if>
-
     </body>
 </html>

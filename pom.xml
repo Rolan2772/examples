@@ -66,7 +66,8 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>        
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -116,6 +117,15 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.10</version>
+                <configuration>
+                    <configLocation>C:/Documents and Settings/rol/Application Data/NetBeans/7.3/config/Preferences/org/nbheaven/sqe/codedefects/checkstyle.xml</configLocation>
+                </configuration>
+            </plugin>
+            -->
         </plugins>
     </build>
 

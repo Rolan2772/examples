@@ -4,23 +4,16 @@
     Author     : Rolan Burykin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@include file="../jspf/import.jspf"%>
-<!DOCTYPE html>
+<%@include file="../fragments/import.jspf"%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><fmt:message key="viewContacts.title"/></title>
-        <style type="text/css">
-            .tableHeader {font-weight: bold;}
-        </style>
-        <%@include file="../jspf/jquery.jspf" %>
-    </head>
+    <c:set var="title" value="viewContacts.title" />
+    <%@include file="../fragments/header.jspf" %>
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery_custom.css" />" />
+    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />" />
+
     <body>
         <c:choose>
-            <c:when test="${not empty contacts}">
-                <h2>Contacts data: </h2>
+            <c:when test="${not empty contacts}">                
                 <table border="0" cellpadding="5" cellspacing="0">
                     <tr class="tableHeader">
                         <td>
@@ -46,17 +39,17 @@
                             <td>
                                 <c:out value="${contact.address}"/>
                             </td>
-                            <td><a href="updateContact?id=<c:out value="${contact.id}"/>">update</a></td>
-                            <td><a href="deleteContact?id=<c:out value="${contact.id}"/>">delete</a></td>
+                            <td><a href="contactDetail?id=<c:out value="${contact.id}"/>"><spring:message code="button.edit"/></a></td>
+                            <td><a href="deleteContact?id=<c:out value="${contact.id}"/>"><spring:message code="button.delete"/></a></td>
                         </tr>                        
                     </c:forEach>            
                 </table>
             </c:when>
             <c:otherwise>
-                <h2>Contacts data is empty</h2> 
+                <div class="title">Contacts data is empty</div>
             </c:otherwise>
         </c:choose>
-        <a href="createContact">Add contact</a>
-        <a href="users">Show users</a>        
-    </body>
+        <a href="contactDetail">Add contact</a>
+        <a href="showUsers">Show users</a>
+</body>
 </html>

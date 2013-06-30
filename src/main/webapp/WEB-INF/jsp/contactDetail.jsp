@@ -4,23 +4,18 @@ Created on : Apr 17, 2013, 3:20:01 PM
 Author     : Rolan Burykin
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html>
+<%@include file="../fragments/import.jspf"%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><fmt:message key="createContact.title"/></title>
-        <%@include file="../jspf/jquery.jspf" %>
-    </head>
-    <body>        
-        <form:form method="POST" commandName="contact" action="/createContact">            
-            <table>
+    <c:set var="title" value="update.title" />
+    <%@include file="../fragments/header.jspf" %>
+    <body>
+        <form:form method="POST" commandName="contact" action="/contactDetail">
+            <form:hidden path="id"/>
+            <table border="0">
                 <tr>
-                    <td colspan="10"><h2>Contact data:</h2></td>
+                    <td colspan="3" class="title">Contact data:</td>
                 </tr>
-                <tr>
+                <tr>                    
                     <td>
                         <form:label path="name">User name:</form:label>
                         </td>
@@ -42,11 +37,17 @@ Author     : Rolan Burykin
                     </td>
                 </tr>
                 <tr>
-                    <td>
-                        <input type="submit" value="Create"/>                        
-                    </td>
-                    <td>
-                        <a href="viewAllContacts">Return</a>
+                    <td colspan="3" >
+                        <table border="0" style="position:relative; left:-5px;"> 
+                            <tr>
+                                <td>
+                                    <input class="ui-button-text" type="submit" value="Save"/>
+                                </td>                
+                                <td>
+                                    <a href="viewAllContacts">Return</a>
+                                </td>
+                            </tr>
+                        </table>
                     </td>
                 </tr>
             </table>

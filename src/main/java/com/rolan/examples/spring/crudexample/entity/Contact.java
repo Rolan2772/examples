@@ -1,4 +1,4 @@
-package com.rolan.examples.spring.crudexample.dao;
+package com.rolan.examples.spring.crudexample.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,9 +16,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name = "CONTACTS")
 public class Contact implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = -9126909684548113081L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
