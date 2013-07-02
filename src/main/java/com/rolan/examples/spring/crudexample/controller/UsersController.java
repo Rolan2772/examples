@@ -13,9 +13,9 @@ public class UsersController {
     @Autowired
     private UsersDao usersDao;
 
-    @RequestMapping(value = "/showUsers", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/showUsers", method = RequestMethod.GET)
     public ModelAndView getUsers() {
-        ModelAndView mv = new ModelAndView("/showUsers");
+        ModelAndView mv = new ModelAndView("/users/showUsers");
         mv.addObject("users", usersDao.getUsers());
         return mv;
     }

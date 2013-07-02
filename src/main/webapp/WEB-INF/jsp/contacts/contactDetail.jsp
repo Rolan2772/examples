@@ -1,23 +1,24 @@
-<%-- 
-Document   : createContact
-Created on : Apr 17, 2013, 3:20:01 PM
-Author     : Rolan Burykin
---%>
-
 <%@include file="../fragments/import.jspf"%>
 <html>
-    <c:set var="title" value="update.title" />
+    <c:choose>
+        <c:when test="${not empty param.id}">
+            <c:set var="title" value="title.updateContact" />
+        </c:when>
+        <c:otherwise>
+            <c:set var="title" value="title.createContact" />
+        </c:otherwise>
+    </c:choose>
     <%@include file="../fragments/header.jspf" %>
     <body>
-        <form:form method="POST" commandName="contact" action="/contactDetail">
+        <form:form method="POST" commandName="contact" action="/contacts/contactDetail">
             <form:hidden path="id"/>
             <table border="0">
                 <tr>
-                    <td colspan="3" class="title">Contact data:</td>
+                    <td colspan="3" class="title"><spring:message code="contacts.detail.dataTitle"/></td>
                 </tr>
                 <tr>                    
                     <td>
-                        <form:label path="name">User name:</form:label>
+                        <form:label path="name"><spring:message code="contacts.detail.userName"/></form:label>
                         </td>
                         <td>
                         <form:input path="name"/>
@@ -28,7 +29,7 @@ Author     : Rolan Burykin
                 </tr>
                 <tr>
                     <td>
-                        <form:label path="address">Address:</form:label>
+                        <form:label path="address"><spring:message code="contacts.detail.address"/></form:label>
                         </td>
                         <td>
                         <form:input path="address"/>
@@ -41,10 +42,10 @@ Author     : Rolan Burykin
                         <table border="0" style="position:relative; left:-5px;"> 
                             <tr>
                                 <td>
-                                    <input class="ui-button-text" type="submit" value="Save"/>
+                                    <input class="ui-button-text" type="submit" value="<spring:message code="button.save"/>"/>
                                 </td>                
                                 <td>
-                                    <a href="viewAllContacts">Return</a>
+                                    <a href="viewAllContacts"><spring:message code="button.return"/></a>
                                 </td>
                             </tr>
                         </table>

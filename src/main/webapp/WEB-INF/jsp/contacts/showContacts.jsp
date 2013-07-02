@@ -6,10 +6,8 @@
 
 <%@include file="../fragments/import.jspf"%>
 <html>
-    <c:set var="title" value="viewContacts.title" />
+    <c:set var="title" value="title.contactsList" />
     <%@include file="../fragments/header.jspf" %>
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/jquery_custom.css" />" />
-    <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/main.css" />" />
 
     <body>
         <c:choose>
@@ -17,13 +15,13 @@
                 <table border="0" cellpadding="5" cellspacing="0">
                     <tr class="tableHeader">
                         <td>
-                            Number
+                            <spring:message code="contacts.number"/>
                         </td>
                         <td>
-                            User name
+                            <spring:message code="contacts.userName"/>
                         </td>
                         <td>
-                            Address
+                            <spring:message code="contacts.address"/>
                         </td>
                         <td></td>
                         <td></td>
@@ -45,11 +43,11 @@
                     </c:forEach>            
                 </table>
             </c:when>
-            <c:otherwise>
-                <div class="title">Contacts data is empty</div>
+            <c:otherwise>                
+                <div class="title"><spring:message code="contacts.msgEmptyList"/></div>
             </c:otherwise>
         </c:choose>
-        <a href="contactDetail">Add contact</a>
-        <a href="showUsers">Show users</a>
+        <a href="contactDetail"><spring:message code="button.addContact"/></a>
+        <a href="../users/showUsers"><spring:message code="button.showUsers"/></a>
 </body>
 </html>

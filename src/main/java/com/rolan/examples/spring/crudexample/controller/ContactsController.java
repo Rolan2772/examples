@@ -19,34 +19,34 @@ public class ContactsController {
     @Autowired
     private ContactsDao contactsDao;
 
-    @RequestMapping(value = {"/", "/viewAllContacts"})
+    @RequestMapping(value = {"/", "/contacts/viewAllContacts"})
     public ModelAndView getAllContacts() {
-        ModelAndView mv = new ModelAndView("/showContacts");
+        ModelAndView mv = new ModelAndView("/contacts/showContacts");
         List<Contact> contacts = contactsDao.getAllContacts();
         mv.addObject("contacts", contacts);
         return mv;
     }
 
-    @RequestMapping(value = "/contactDetail", method = RequestMethod.GET)
+    @RequestMapping(value = "/contacts/contactDetail", method = RequestMethod.GET)
     public ModelAndView editContact(@RequestParam(required = false) Long id) {
         Contact contact = (id == null) ? new Contact() : contactsDao.getContact(id);
-        return new ModelAndView("contactDetail", "contact", contact);
+        return new ModelAndView("contacts/contactDetail", "contact", contact);
     }
 
-    @RequestMapping(value = "/contactDetail", method = RequestMethod.POST)
+    @RequestMapping(value = "/contacts/contactDetail", method = RequestMethod.POST)
     public String editContact(@ModelAttribute @Valid Contact contact, BindingResult result) {
-        String view = "redirect:/viewAllContacts";
+        String view = "redirect:/contacts/viewAllContacts";
         if (result.hasErrors()) {
-            view = "/contactDetail";
+            view = "/contacts/contactDetail";
         } else {
             contactsDao.update(contact);
         }
         return view;
     }
 
-    @RequestMapping(value = "/deleteContact")
+    @RequestMapping(value = "/contacts/deleteContact")
     public String deleteContact(@RequestParam final Long id) {
         contactsDao.delete(id);
-        return "redirect:/viewAllContacts";
+        return "redirect:/contacts/viewAllContacts";
     }
 }

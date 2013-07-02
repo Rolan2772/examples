@@ -43,13 +43,11 @@
     
     <tx:annotation-driven/>
     
-    <!--<mvc:view-controller path="/" view-name="showContacts"/>-->
-    
     <bean name="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>/WEB-INF/messages/messages</value>
-                <value>/WEB-INF/messages/controls</value>
+                <value>classpath:messages/messages</value>
+                <value>classpath:messages/controls</value>
             </list>
         </property>
         <property name="cacheSeconds" value="10"/>

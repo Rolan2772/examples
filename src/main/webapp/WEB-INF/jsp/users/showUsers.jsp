@@ -6,20 +6,20 @@
 
 <%@include file="../fragments/import.jspf"%>
 <html>
-    <c:set var="title" value="viewUsers.title" />
+    <c:set var="title" value="title.usersList" />
     <%@include file="../fragments/header.jspf" %>
     <body>
         <c:if test="${not empty users}">
             <table border="0" cellpadding="5" cellspacing="0">
                 <tr class="tableHeader">
                     <td>
-                        User name
+                        <spring:message code="users.userName"/>                        
                     </td>
                     <td>
-                        Status
+                        <spring:message code="users.status"/>                        
                     </td>
                     <td>
-                        Priority
+                        <spring:message code="users.priority"/>                        
                     </td>
                 </tr>
                 <c:forEach var="user" items="${users}">
@@ -37,7 +37,7 @@
                 </c:forEach>
                 <tr>
                     <td>
-                        <a href="viewAllContacts">Return</a>
+                        <a href="../contacts/viewAllContacts"><spring:message code="button.return"/></a>
                     </td>
                 </tr>
             </table>
