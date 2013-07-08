@@ -1,6 +1,7 @@
 package com.rolan.examples.spring.crudexample.controller;
 
 import com.rolan.examples.spring.crudexample.dao.ContactsDao;
+import com.rolan.examples.spring.crudexample.dao.SimpleContactsDao;
 import com.rolan.examples.spring.crudexample.entity.Contact;
 import java.util.List;
 import javax.validation.Valid;
@@ -29,7 +30,7 @@ public class ContactsController {
 
     @RequestMapping(value = "/contacts/contactDetail", method = RequestMethod.GET)
     public ModelAndView editContact(@RequestParam(required = false) Long id) {
-        Contact contact = (id == null) ? new Contact() : contactsDao.getContact(id);
+        Contact contact = (id == null) ? new Contact() : contactsDao.getContactById(id);
         return new ModelAndView("contacts/contactDetail", "contact", contact);
     }
 
