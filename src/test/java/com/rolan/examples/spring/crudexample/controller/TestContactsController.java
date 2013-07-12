@@ -1,6 +1,5 @@
 package com.rolan.examples.spring.crudexample.controller;
 
-import com.rolan.examples.spring.crudexample.controller.TestContactsController.ContactsControllerTestConfiguration;
 import com.rolan.examples.spring.crudexample.dao.ContactsDao;
 import com.rolan.examples.spring.crudexample.entity.Contact;
 import java.util.Collections;
@@ -19,7 +18,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.mockito.Mockito.*;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.hamcrest.Matchers.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -43,7 +41,7 @@ public class TestContactsController {
         when(contactsDao.getAllContacts()).thenReturn(contactsList);
         mockMvc.perform(post("/")).andExpect(status().isOk()).
                 andExpect(view().name("/contacts/showContacts")).
-                andExpect(request().attribute("contacts", contactsList));
+                andExpect(model().attribute("contacts", contactsList));
     }
     
     @Test
@@ -52,15 +50,37 @@ public class TestContactsController {
         when(contactsDao.getAllContacts()).thenReturn(contactsList);
         mockMvc.perform(post("/")).andExpect(status().isOk()).
                 andExpect(view().name("/contacts/showContacts")).
-                andExpect(request().attribute("contacts", contactsList));
+                andExpect(model().attribute("contacts", contactsList));
     }
     
     @Test
-    public void testCreateContactDetail() throws Exception {
+    public void testCreateContact() throws Exception {
         mockMvc.perform(get("/contacts/contactDetail")).
                 andExpect(status().isOk()).
                 andExpect(view().name("contacts/contactDetail")).
-                andExpect(request().attribute("contact", notNullValue()));
+                andExpect(model().attribute("contact", notNullValue()));
+    }
+    
+    @Test
+    public void testEditContact() throws Exception {
+        Long contactId = 1L;
+        Contact contact = new Contact();
+        contact.setId(contactId);
+        when(contactsDao.getContactById(contactId)).thenReturn(contact);
+        mockMvc.perform(get("/contacts/contactDetail").param("id", Long.toString(contactId))).
+                andExpect(status().isOk()).
+                andExpect(view().name("contacts/contactDetail")).
+                andExpect(model().attribute("contact", contact));
+    }
+    
+    @Test
+    public void testEditedContact() throws Exception {
+        Long contactId = 1L;
+        Contact contact = new Contact();
+        contact.setId(contactId);
+        mockMvc.perform(post("/contacts/contactDetail").param("id", "1").param("name", "name")).
+                andExpect(status().isMovedTemporarily()).
+                andExpect(redirectedUrl("/contacts/viewAllContacts"));
     }
     
     @Configuration
