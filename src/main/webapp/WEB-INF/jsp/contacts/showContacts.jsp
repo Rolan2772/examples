@@ -8,7 +8,8 @@
 <html>
     <c:set var="title" value="title.contactsList" />
     <%@include file="../fragments/header.jspf" %>
-
+    <spring:url value="/contacts" var="contactsRoot"/>
+    <spring:url value="/users" var="usersRoot"/>
     <body>
         <c:choose>
             <c:when test="${not empty contacts}">                
@@ -37,8 +38,8 @@
                             <td>
                                 <c:out value="${contact.address}"/>
                             </td>
-                            <td><a href="contactDetail?id=<c:out value="${contact.id}"/>"><spring:message code="button.edit"/></a></td>
-                            <td><a href="deleteContact?id=<c:out value="${contact.id}"/>"><spring:message code="button.delete"/></a></td>
+                            <td><a href="${contactsRoot}/contactDetail?id=<c:out value="${contact.id}"/>"><spring:message code="button.edit"/></a></td>
+                            <td><a href="${contactsRoot}/deleteContact?id=<c:out value="${contact.id}"/>"><spring:message code="button.delete"/></a></td>
                         </tr>                        
                     </c:forEach>            
                 </table>
@@ -47,7 +48,8 @@
                 <div class="title"><spring:message code="contacts.msgEmptyList"/></div>
             </c:otherwise>
         </c:choose>
-        <a href="contactDetail"><spring:message code="button.addContact"/></a>
-        <a href="../users/showUsers"><spring:message code="button.showUsers"/></a>
+        
+        <a href="${contactsRoot}/contactDetail"><spring:message code="button.addContact"/></a>
+        <a href="${usersRoot}/showUsers"><spring:message code="button.showUsers"/></a>
 </body>
 </html>
