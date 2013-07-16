@@ -1,7 +1,6 @@
 package com.rolan.examples.spring.crudexample.controller;
 
 import com.rolan.examples.spring.crudexample.dao.ContactsDao;
-import com.rolan.examples.spring.crudexample.dao.SimpleContactsDao;
 import com.rolan.examples.spring.crudexample.entity.Contact;
 import java.util.List;
 import javax.validation.Valid;
@@ -38,7 +37,7 @@ public class ContactsController {
     public String editContact(@ModelAttribute @Valid Contact contact, BindingResult result) {
         String view = "redirect:/contacts/viewAllContacts";
         if (result.hasErrors()) {
-            view = "/contacts/contactDetail";
+            view = "contacts/contactDetail";
         } else {
             contactsDao.update(contact);
         }
