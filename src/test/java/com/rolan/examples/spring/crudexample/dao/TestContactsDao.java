@@ -20,6 +20,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import static org.junit.Assert.*;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ImportResource;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
@@ -28,13 +30,22 @@ public class TestContactsDao {
     @Autowired
     private ContactsDao contactsDao;
 
+    @Test
+    public void testGetContactById() {
+        Long id = 7L;
+        Contact contact = contactsDao.getContactById(id);
+        assertNotNull(contact);
+        assertEquals(id, contact.getId());
+    }
+
     @Configuration
-    @PropertySource("classpath:/dao.properties")
+    @ImportResource("classpath:/com/rolan/examples/spring/crudexample/dao/spring-resources.xml")
     @EnableTransactionManagement
     static class ContactsDaoTestConfiguration {
 
         @Autowired
-        private Environment env;
+        @Qualifier("hibernateProperties")
+        private Properties hibernateProperties;
 
         @Bean
         public DataSource dataSource() {
@@ -43,22 +54,8 @@ public class TestContactsDao {
         }
 
         @Bean
-        public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-            return new PropertySourcesPlaceholderConfigurer();
-        }
-
-        @Bean
         public ContactsDao contactsDao() {
             return new SimpleContactsDao();
-        }
-
-        private Properties getHibernateProperties() {
-            Properties properties = new Properties();
-            properties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
-            properties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
-            properties.setProperty("hibernate.hbm2ddl.import_files", env.getProperty("hibernate.hbm2ddl.import_files"));
-            properties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
-            return properties;
         }
 
         @Bean
@@ -66,7 +63,7 @@ public class TestContactsDao {
             LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
             sessionFactory.setDataSource(dataSource());
             sessionFactory.setPackagesToScan(new String[]{"com.rolan.examples.spring.crudexample.entity"});
-            sessionFactory.setHibernateProperties(getHibernateProperties());
+            sessionFactory.setHibernateProperties(hibernateProperties);
             return sessionFactory;
         }
 
@@ -74,13 +71,5 @@ public class TestContactsDao {
         public HibernateTransactionManager transactionManager() {
             return new HibernateTransactionManager(sessionFactory().getObject());
         }
-    }
-    
-    @Test
-    public void testGetContactById() {
-        Long id = 7L;
-        Contact contact = contactsDao.getContactById(id);
-        assertNotNull(contact);
-        assertEquals(id, contact.getId());
     }
 }
