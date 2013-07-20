@@ -1,6 +1,7 @@
 package com.rolan.examples.spring.crudexample.dao;
 
 import com.rolan.examples.spring.crudexample.entity.Contact;
+import java.util.List;
 import java.util.Properties;
 import javax.sql.DataSource;
 import org.junit.Test;
@@ -8,9 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -18,24 +16,44 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import static org.junit.Assert.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ImportResource;
 
+import static org.junit.Assert.*;
+import org.junit.Ignore;
+import org.springframework.transaction.annotation.Transactional;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
+@Transactional
 public class TestContactsDao {
 
     @Autowired
     private ContactsDao contactsDao;
-
+    @Autowired
+    private TestDaoSupport daoSupport;
+    
     @Test
     public void testGetContactById() {
-        Long id = 7L;
-        Contact contact = contactsDao.getContactById(id);
-        assertNotNull(contact);
-        assertEquals(id, contact.getId());
+        Contact expectedContact = new Contact("Test user 1", "350 Fifth Avenue, 34th floor. New York, NY");
+        daoSupport.createContact(expectedContact);
+
+        Contact actualContact = contactsDao.getContactById(expectedContact.getId());
+        assertNotNull(actualContact);
+        assertEquals(expectedContact, actualContact);
+    }
+
+    @Test
+    public void testGetAllContacts() {
+        Contact contact1 = new Contact("Test user 1", "350 Fifth Avenue, 34th floor. New York, NY");
+        daoSupport.createContact(contact1);
+        Contact contact2 = new Contact("Test user 2", "12755 Quincy Avenue , Holland, MI 49424");
+        daoSupport.createContact(contact2);
+        
+        List<Contact> contacts = contactsDao.getAllContacts();
+        assertEquals(2, contacts.size());
+        assertTrue(contacts.contains(contact1));
+        assertTrue(contacts.contains(contact2));
     }
 
     @Configuration
@@ -70,6 +88,11 @@ public class TestContactsDao {
         @Bean
         public HibernateTransactionManager transactionManager() {
             return new HibernateTransactionManager(sessionFactory().getObject());
+        }
+        
+        @Bean
+        public TestDaoSupport daoSupport() {
+            return new TestDaoSupport();
         }
     }
 }
