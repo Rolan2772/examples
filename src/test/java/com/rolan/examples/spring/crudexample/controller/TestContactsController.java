@@ -2,6 +2,7 @@ package com.rolan.examples.spring.crudexample.controller;
 
 import com.rolan.examples.spring.crudexample.dao.ContactsDao;
 import com.rolan.examples.spring.crudexample.entity.Contact;
+import com.rolan.examples.spring.crudexample.service.ContactsService;
 import java.util.Collections;
 import java.util.List;
 import org.hamcrest.Matchers;
@@ -24,7 +25,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 public class TestContactsController {
 
     @Autowired
-    private ContactsDao contactsDao;
+    private ContactsService contactsService;
     @Autowired
     private ContactsController contactsController;
     private MockMvc mockMvc;
@@ -37,7 +38,7 @@ public class TestContactsController {
     @Test
     public void testDefaultPage() throws Exception {
         List<Contact> contactsList = Collections.<Contact>emptyList();
-        Mockito.when(contactsDao.getAllContacts()).thenReturn(contactsList);
+        Mockito.when(contactsService.getAllContacts()).thenReturn(contactsList);
         mockMvc.perform(MockMvcRequestBuilders.post("/")).
                 andExpect(MockMvcResultMatchers.status().isOk()).
                 andExpect(MockMvcResultMatchers.view().name("/contacts/showContacts")).
@@ -47,7 +48,7 @@ public class TestContactsController {
     @Test
     public void testViewAllContacts() throws Exception {
         List<Contact> contactsList = Collections.<Contact>emptyList();
-        Mockito.when(contactsDao.getAllContacts()).thenReturn(contactsList);
+        Mockito.when(contactsService.getAllContacts()).thenReturn(contactsList);
         mockMvc.perform(MockMvcRequestBuilders.post("/contacts/viewAllContacts")).
                 andExpect(MockMvcResultMatchers.status().isOk()).
                 andExpect(MockMvcResultMatchers.view().name("/contacts/showContacts")).
@@ -68,7 +69,7 @@ public class TestContactsController {
         Long contactId = 1L;
         Contact contact = new Contact();
         contact.setId(contactId);
-        Mockito.when(contactsDao.getContactById(contactId)).thenReturn(contact);
+        Mockito.when(contactsService.getContactById(contactId)).thenReturn(contact);
         mockMvc.perform(MockMvcRequestBuilders.get("/contacts/contactDetail").
                 param("id", Long.toString(contactId))).
                 andExpect(MockMvcResultMatchers.status().isOk()).
@@ -103,8 +104,8 @@ public class TestContactsController {
     static class ContactsControllerTestConfiguration {
 
         @Bean
-        public ContactsDao contactsDao() {
-            return Mockito.mock(ContactsDao.class);
+        public ContactsService contactsDao() {
+            return Mockito.mock(ContactsService.class);
         }
 
         @Bean

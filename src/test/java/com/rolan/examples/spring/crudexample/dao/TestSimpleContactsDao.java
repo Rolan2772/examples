@@ -20,13 +20,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ImportResource;
 
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 import org.springframework.transaction.annotation.Transactional;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration
 @Transactional
-public class TestContactsDao {
+public class TestSimpleContactsDao {
 
     @Autowired
     private ContactsDao contactsDao;
