@@ -1,7 +1,7 @@
 package com.rolan.examples.spring.crudexample.controller;
 
 import com.rolan.examples.spring.crudexample.entity.Contact;
-import com.rolan.examples.spring.crudexample.service.ContactsService;
+import com.rolan.examples.spring.crudexample.service.CrudService;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ContactsController {
 
     @Autowired
-    private ContactsService contactsService;
+    private CrudService contactsService;
 
     @RequestMapping(value = {"/", "/contacts/viewAllContacts"})
     public ModelAndView getAllContacts() {

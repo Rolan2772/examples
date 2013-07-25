@@ -2,7 +2,7 @@ package com.rolan.examples.spring.crudexample.controller;
 
 import com.rolan.examples.spring.crudexample.dao.ContactsDao;
 import com.rolan.examples.spring.crudexample.entity.Contact;
-import com.rolan.examples.spring.crudexample.service.ContactsService;
+import com.rolan.examples.spring.crudexample.service.CrudService;
 import java.util.Collections;
 import java.util.List;
 import org.hamcrest.Matchers;
@@ -25,7 +25,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 public class TestContactsController {
 
     @Autowired
-    private ContactsService contactsService;
+    private CrudService contactsService;
     @Autowired
     private ContactsController contactsController;
     private MockMvc mockMvc;
@@ -104,8 +104,8 @@ public class TestContactsController {
     static class ContactsControllerTestConfiguration {
 
         @Bean
-        public ContactsService contactsDao() {
-            return Mockito.mock(ContactsService.class);
+        public CrudService contactsDao() {
+            return Mockito.mock(CrudService.class);
         }
 
         @Bean

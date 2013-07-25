@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class SimpleContactsService implements ContactsService {
+public class SimpleCrudService implements CrudService {
 
     @Autowired
     private ContactsDao contactsDao;

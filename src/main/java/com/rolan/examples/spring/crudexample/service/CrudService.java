@@ -3,7 +3,7 @@ package com.rolan.examples.spring.crudexample.service;
 import com.rolan.examples.spring.crudexample.entity.Contact;
 import java.util.List;
 
-public interface ContactsService {
+public interface CrudService {
 
     void delete(Long id);
 
