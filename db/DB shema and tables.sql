@@ -26,15 +26,16 @@ DROP TABLE IF EXISTS `contacts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `address` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `dob` timestamp NULL DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `mobile` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unique_data` (`name`,`address`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +44,7 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
+INSERT INTO `contacts` (`id`, `name`, `address`, `gender`, `dob`, `email`, `mobile`, `phone`) VALUES (7,'Test user 1','350 Fifth Avenue, 34th floor. New York, NY',NULL,NULL,NULL,NULL,NULL),(8,'Test user 2','12755 Quincy Avenue , Holland, MI 49424',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +68,7 @@ CREATE TABLE `user_statuses` (
 
 LOCK TABLES `user_statuses` WRITE;
 /*!40000 ALTER TABLE `user_statuses` DISABLE KEYS */;
-INSERT INTO `user_statuses` VALUES (1,'Active'),(2,'Inactive');
+INSERT INTO `user_statuses` (`id`, `name`) VALUES (1,'Active'),(2,'Inactive');
 /*!40000 ALTER TABLE `user_statuses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,7 +87,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `users_statuses_idx` (`status`),
   CONSTRAINT `users_statuses` FOREIGN KEY (`status`) REFERENCES `user_statuses` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +96,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'User 1',1,1),(2,'User 2',2,1),(3,'User 3',1,2);
+INSERT INTO `users` (`id`, `name`, `priority`, `status`) VALUES (1,'User 1',1,1),(2,'User 2',2,1),(3,'User 3',1,2),(4,'User 4',1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -107,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-04 20:47:36
+-- Dump completed on 2013-07-20 19:37:20

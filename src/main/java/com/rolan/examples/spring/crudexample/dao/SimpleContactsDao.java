@@ -5,22 +5,18 @@ import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional
 public class SimpleContactsDao implements ContactsDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Transactional(readOnly = true)
     @Override
     public Contact getContactById(Long id) {
         return (Contact) sessionFactory.getCurrentSession().get(Contact.class, id);
     }
 
-    @Transactional(readOnly = true)
     @Override
     public List<Contact> getAllContacts() {
         return sessionFactory.getCurrentSession().createCriteria(Contact.class).list();
