@@ -2,6 +2,7 @@ package com.rolan.examples.spring.crudexample.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,21 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "CONTACTS")
+
+@Table(name = "contacts", uniqueConstraints = @UniqueConstraint(name = "unique_data", columnNames = {"name", "address"}))
 public class Contact implements Serializable {
 
     private static final long serialVersionUID = -9126909684548113081L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @Column(nullable = false)
     @NotEmpty(message = "Name is required.")
     private String name;
-    @Column
+    @Column(nullable = false)
     private String address;
     @Column
     private String gender;
@@ -38,6 +41,14 @@ public class Contact implements Serializable {
     private String mobile;
     @Column
     private String phone;
+
+    public Contact(String name, String address) {
+        this.name = name;
+        this.address = address;
+    }
+
+    public Contact() {
+    }
 
     public Long getId() {
         return id;
@@ -101,5 +112,22 @@ public class Contact implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, address);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Contact other = (Contact) obj;
+        return Objects.equals(this.name, other.name) && Objects.equals(this.address, other.address);
     }
 }

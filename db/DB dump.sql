@@ -10,14 +10,15 @@ USE `crud` ;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `crud`.`contacts` (
   `id` INT NOT NULL AUTO_INCREMENT ,
-  `name` VARCHAR(255) NULL DEFAULT NULL ,
-  `address` VARCHAR(255) NULL DEFAULT NULL ,
+  `name` VARCHAR(255) NOT NULL ,
+  `address` VARCHAR(255) NOT NULL ,
   `gender` VARCHAR(255) NULL DEFAULT NULL ,
   `dob` TIMESTAMP NULL DEFAULT NULL ,
   `email` VARCHAR(255) NULL DEFAULT NULL ,
   `mobile` VARCHAR(255) NULL DEFAULT NULL ,
   `phone` VARCHAR(255) NULL DEFAULT NULL ,
-  PRIMARY KEY (`id`) )
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `unique_data` (`name` ASC, `address` ASC) )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
