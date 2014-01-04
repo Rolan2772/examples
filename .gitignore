@@ -7,3 +7,14 @@
 /Regexp/.idea
 /Regexp/target
 /Regexp/*.iml
+/GWT/UiBinder/.idea
+/GWT/UiBinder/.settings
+/GWT/UiBinder/target
+/GWT/UiBinder/appTest-prod.launch
+/GWT/UiBinder/.classpath
+/GWT/UiBinder/.project
+/GWT/UiBinder/appTest-dev.launch
+/CrudExample/.settings
+/CrudExample/.project
+/CrudExample/.classpath
+/MockitoExamples/target
