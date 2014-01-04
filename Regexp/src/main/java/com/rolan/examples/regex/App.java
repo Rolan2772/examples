@@ -33,7 +33,7 @@ public class App {
     public enum RegexPattern {
 
         WORD("Word characters", "\\w*"),
-        ZERO_MONEY("Zero money value", "^(-|\\+)?0{1,3}(\\,0{3})*(\\.0+)?");
+        ZERO_MONEY("Zero money value", "^[-+]?0{1,3}(\\,0{3})*(\\.0+)?");
 
         RegexPattern(String name, String pattern) {
             this.name = name;
