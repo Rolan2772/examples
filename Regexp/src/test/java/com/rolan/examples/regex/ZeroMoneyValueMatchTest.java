@@ -41,6 +41,7 @@ public class ZeroMoneyValueMatchTest {
                 {"0.0", true},
                 {"0.00", true},
                 {"0.000", true},
+                {"00.0000", true},
 
                 {"-", false},
                 {"-0", true},
