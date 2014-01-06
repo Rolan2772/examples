@@ -9,28 +9,18 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static junit.framework.Assert.*;
+import static org.junit.Assert.*;
 
 @RunWith(Parameterized.class)
-public class ZeroMoneyValueMatchTest {
+public class SimpleZeroMoneyMatchTest {
 
-    private String testValue;
     private boolean expectedResult;
+    private String valueString;
     private App app;
 
-    public ZeroMoneyValueMatchTest(String testValue, boolean expectedResult) {
-        this.testValue = testValue;
+    public SimpleZeroMoneyMatchTest(String valueString, boolean expectedResult) {
         this.expectedResult = expectedResult;
-    }
-
-    @Before
-    public void before() {
-        app = new App();
-    }
-
-    @After
-    public void after() {
-        app = null;
+        this.valueString = valueString;
     }
 
     @Parameterized.Parameters
@@ -47,11 +37,11 @@ public class ZeroMoneyValueMatchTest {
                 {"-0", true},
                 {"-00", true},
                 {"-000", true},
-                {"-0000", false},
+                {"-0000", true},
                 {"-0,000", true},
-                {"-0,0000", false},
+                {"-0,0000", true},
                 {"-00,000", true},
-                {"-0,000,00", false},
+                {"-0,000,00", true},
                 {"-0,000,000", true},
                 {"-0,000,000.", false},
 
@@ -59,20 +49,32 @@ public class ZeroMoneyValueMatchTest {
                 {"+0", true},
                 {"+00", true},
                 {"+000", true},
-                {"+0000", false},
+                {"+0000", true},
 
                 {"", false},
                 {"0", true},
                 {"00", true},
                 {"000", true},
-                {"0000", false}
+                {"0000", true},
 
+                {"1", false},
+                {"0.01", false}
         };
         return Arrays.asList(data);
     }
 
+    @Before
+    public void before() {
+        app = new App();
+    }
+
+    @After
+    public void after() {
+        app = null;
+    }
+
     @Test
     public void testMatch() {
-        assertEquals("Failed to match string '" + testValue + "'.", expectedResult, app.isZeroMoneyValue(testValue));
+        assertEquals("Failed to match value '" + valueString + "'.", expectedResult, app.isSimpleZeroMoney(valueString));
     }
 }

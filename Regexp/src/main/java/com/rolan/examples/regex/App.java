@@ -30,10 +30,15 @@ public class App {
         return RegexPattern.ZERO_MONEY.matches(str);
     }
 
+    public boolean isSimpleZeroMoney(String str) {
+        return RegexPattern.SIMPLE_ZERO_MONEY.matches(str);
+    }
+
     public enum RegexPattern {
 
         WORD("Word characters", "\\w*"),
-        ZERO_MONEY("Zero money value", "^[-+]?0{1,3}(\\,0{3})*(\\.0+)?");
+        ZERO_MONEY("Zero money value", "^[-+]?0{1,3}(\\,0{3})*(\\.0+)?"),
+        SIMPLE_ZERO_MONEY("Simple zero money value", "^[+-]?0+[0\\,]*(\\.0+)?");
 
         RegexPattern(String name, String pattern) {
             this.name = name;
