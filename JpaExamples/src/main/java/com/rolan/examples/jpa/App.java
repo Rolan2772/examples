@@ -12,6 +12,7 @@ public class App {
     public static void main(String... args) {
         EntityManagerFactory emFactory = Persistence.createEntityManagerFactory("JpaBasicsTutorial");
         EntityManager em = emFactory.createEntityManager();
+        EntityManager em1 = emFactory.createEntityManager();
 
         Person person = new Person();
         em.getTransaction().begin();
@@ -25,7 +26,7 @@ public class App {
         System.out.println("After commit: " + person);
 
         em.getTransaction().begin();
-        person = em.find(Person.class, person.getId(), LockModeType.OPTIMISTIC_FORCE_INCREMENT);
+        person = em.find(Person.class, person.getId(), LockModeType.WRITE);
         System.out.println("Founded person: " + person);
         em.getTransaction().commit();
         System.out.println("After commit: " + person);
@@ -38,9 +39,15 @@ public class App {
         em.getTransaction().rollback();
         System.out.println("After rollback: " + person);
 
+        // Case does not works
+        em1.getTransaction().begin();
+        Person person1 = em.find(Person.class, person.getId(), LockModeType.NONE);
+        person.setName("John");
         em.getTransaction().begin();
-        person = em.find(Person.class, person.getId(), LockModeType.OPTIMISTIC_FORCE_INCREMENT);
+        person = em.find(Person.class, person.getId(), LockModeType.WRITE);
         System.out.println("Founded person: " + person);
+        em1.getTransaction().rollback();
+        em.refresh(person);
         em.flush();
         System.out.println("Founded person after flush: " + person);
         em.getTransaction().commit();
