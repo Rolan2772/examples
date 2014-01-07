@@ -1,0 +1,9 @@
+.container h1 {
+    margin: 0;
+    padding: 0 0 15px 15px;
+}
+
+.container .formDivider {
+    background-color: #933247;
+    height: 2px;
+}
