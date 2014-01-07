@@ -22,3 +22,6 @@
 /JpaExamples/*.iml
 /JpaExamples/target
 /JpaExamples/*.iml
+/JpaExamples/.idea
+/JpaExamples/*.iml
+/JpaExamples/target
