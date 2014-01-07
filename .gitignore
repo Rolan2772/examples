@@ -18,3 +18,7 @@
 /CrudExample/.project
 /CrudExample/.classpath
 /MockitoExamples/target
+/JpaExamples/.idea
+/JpaExamples/*.iml
+/JpaExamples/target
+/JpaExamples/*.iml
