@@ -42,3 +42,8 @@
 /GWT/RPC/target
 /GWT/RPC/.classpath
 /GWT/UiBinder/UiBinder.iml
+/SpringOXM/SpringOXM.iml
+/SpringOXM/.idea
+/SpringOXM/target
+/SpringOXM/book.xml
+/SpringOXM/settings.xml
