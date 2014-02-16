@@ -1,15 +1,15 @@
 package com.rolan.examples.editor.shared.dto;
 
-public class Emplyee {
+public class Employee {
 
     private Long id;
     private String name;
     private String position;
 
-    public Emplyee() {
+    public Employee() {
     }
 
-    public Emplyee(String name, String position) {
+    public Employee(String name, String position) {
         this.name = name;
         this.position = position;
     }

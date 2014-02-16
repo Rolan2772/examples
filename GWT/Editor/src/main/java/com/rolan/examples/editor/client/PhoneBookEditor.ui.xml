@@ -1,0 +1,22 @@
+<ui:UiBinder
+        xmlns:ui="urn:ui:com.google.gwt.uibinder"
+        xmlns:g="urn:import:com.google.gwt.user.client.ui"
+        xmlns:myEditor="urn:import:com.rolan.examples.editor.client">
+    <ui:style field="local">
+        .editorButton {
+            margin: 3px;
+        }
+    </ui:style>
+
+    <g:FlowPanel>
+        <g:FlowPanel>
+            <myEditor:ContactEditor ui:field="contact"/>
+            <myEditor:EmployeeEditor ui:field="employee"/>
+        </g:FlowPanel>
+        <g:FlowPanel>
+            <g:Button ui:field="reset" text="Reset" addStyleNames="{local.editorButton}"/>
+            <g:Button ui:field="save" text="Save" addStyleNames="{local.editorButton}"/>
+            <g:Button ui:field="fetch" text="Fetch" addStyleNames="{local.editorButton}"/>
+        </g:FlowPanel>
+    </g:FlowPanel>
+</ui:UiBinder>
