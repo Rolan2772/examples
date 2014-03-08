@@ -1,7 +1,8 @@
 package com.rolan.examples.springtransactions;
 
+import com.rolan.examples.springtransactions.dao.impl.UserService;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * Hello world!
@@ -10,10 +11,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class App {
     
     public static void main(String[] args) {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext("com.rolan.examples.springtransactions.config");
-        System.out.print("Hello Transactions :)");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        System.out.println("Hello Transactions :)");
         
-        UsersDao dao = ctx.getBean(UsersDao.class);
-        System.out.println(dao.getUsers());
+        UserService userService = ctx.getBean(UserService.class);
+        System.out.println(userService.getUsers());
     }
 }
