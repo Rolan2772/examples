@@ -50,3 +50,10 @@
 /SpringELExample/.idea
 /SpringELExample/target
 /SpringELExample/SpringELExample.iml
+/SpringTransactions/*
+/SpringTransactions/*
+/SpringTransactions/*
+/SpringTransactions/*.iml
+/Hibernate/Mapping/*.iml
+/Hibernate/Mapping/*
+/Hibernate/Mapping/*
