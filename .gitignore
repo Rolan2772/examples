@@ -56,3 +56,5 @@
 /Hibernate/Mapping/*.iml
 /Hibernate/Mapping/*
 /Hibernate/Mapping/*
+/ValidationExample/.idea
+/ValidationExample/*.iml
