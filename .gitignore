@@ -59,3 +59,6 @@
 /Hibernate/Mapping/*
 /ValidationExample/ValidationExample.iml
 /ValidationExample/.idea
+/JS/JavascriptExample.iml
+/JS/.idea
+/JS/target
