@@ -8,7 +8,6 @@
         $http.get('/resources/json/products.json')
             .success(function (data) {
                 store.products = data;
-                alert(data);
             })
             .error(function () {
                 alert('Can\'t load products');
