@@ -62,3 +62,14 @@
 /JS/JavascriptExample.iml
 /JS/.idea
 /JS/target
+/GWT/CellWidgets/*.classpath
+/GWT/CellWidgets/*.iml
+/GWT/CellWidgets/*.project
+/GWT/CellWidgets/target
+/GWT/DictionariesConfig/*.iml
+/GWT/DictionariesConfig/*
+/GWT/DictionariesConfig/*
+/GWT/DictionariesConfig/*
+/ValidationExample/target
+/JS/*.iml
+/GWT/CellWidgets/.settings

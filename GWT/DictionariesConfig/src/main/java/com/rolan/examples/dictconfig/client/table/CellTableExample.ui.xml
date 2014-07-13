@@ -1,0 +1,19 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+    <ui:style>
+        @external width;
+        .width {
+            width: 100%;
+        }
+    </ui:style>
+
+    <g:FlowPanel>
+        <g:FlowPanel>
+            <c:CellTable ui:field="cellTable" addStyleNames="{style.width}"/>
+        </g:FlowPanel>
+        <g:FlowPanel>
+            <c:SimplePager ui:field="pager"/>
+        </g:FlowPanel>
+    </g:FlowPanel>
+</ui:UiBinder>

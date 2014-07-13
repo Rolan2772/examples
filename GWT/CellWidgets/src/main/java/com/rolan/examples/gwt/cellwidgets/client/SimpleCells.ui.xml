@@ -1,0 +1,27 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'
+             xmlns:c="urn:import:com.google.gwt.user.cellview.client">
+
+    <ui:style>
+        .row {
+            display: table-row;
+        }
+        .cell {
+            display: table-cell;
+        }
+        .name {
+            text-align: right;
+            padding-right: 5px;
+        }
+    </ui:style>
+    <g:FlowPanel>
+        <g:FlowPanel addStyleNames="{style.row}">
+            <g:Label text="Text cell: " addStyleNames="{style.cell} {style.name}"/>
+            <c:CellWidget ui:field="textCellWidget" addStyleNames="{style.cell}"/>
+        </g:FlowPanel>
+        <g:FlowPanel addStyleNames="{style.row}">
+            <g:Label text="Number cell: " addStyleNames="{style.cell} {style.name}"/>
+            <c:CellWidget ui:field="numberCellWidget" addStyleNames="{style.cell}"/>
+        </g:FlowPanel>
+    </g:FlowPanel>
+</ui:UiBinder>
