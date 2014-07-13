@@ -1,0 +1,36 @@
+<ui:UiBinder xmlns:ui='urn:ui:com.google.gwt.uibinder'
+             xmlns:g='urn:import:com.google.gwt.user.client.ui'>
+    <ui:style type="com.rolan.examples.editor.client.EmployeeEditor.Style">
+        .vertical {
+            display: block;
+        }
+    </ui:style>
+
+    <ui:style field="local">
+        .label {
+            float: left;
+            width: 75px;
+            text-align: right;
+            margin-right: 5px;
+        }
+        .emptyLabel {
+            display: inline-block;
+            width: 50px;
+        }
+    </ui:style>
+
+    <g:FlowPanel ui:field="mainPanel">
+        <g:FlowPanel>
+            <g:Label text="ID: " addStyleNames="{local.label}"/>
+            <g:Label ui:field="id" text="" addStyleNames="{local.emptyLabel}"/>
+        </g:FlowPanel>
+        <g:FlowPanel>
+            <g:Label text="Name: " addStyleNames="{local.label}"/>
+            <g:TextBox ui:field="name" />
+        </g:FlowPanel>
+        <g:FlowPanel>
+            <g:Label text="Position: " addStyleNames="{local.label}"/>
+            <g:TextBox ui:field="position"/>
+        </g:FlowPanel>
+    </g:FlowPanel>
+</ui:UiBinder>
